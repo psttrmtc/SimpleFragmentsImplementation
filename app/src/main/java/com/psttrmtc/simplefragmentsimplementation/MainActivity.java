@@ -18,6 +18,7 @@ public class MainActivity extends FragmentActivity implements ListFragment.SendI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
         ft.replace(R.id.listContainer, new ListFragment());
         ft.replace(R.id.infoContainer, new FragmentInfo());
         ft.commit();
@@ -38,10 +39,13 @@ public class MainActivity extends FragmentActivity implements ListFragment.SendI
         if (pos == -1){
             int last = _studentList.size() -1;
             listFragment.sendInfo.sentStudent(last , _studentList.get(last));
+            listFragment.receivePos(last);
         }else if (pos == 0){
             listFragment.sendInfo.sentStudent(0, _studentList.get(0));
+            listFragment.receivePos(pos);
         }else if (pos < _studentList.size()){
             listFragment.sendInfo.sentStudent(pos, _studentList.get(pos));
+            listFragment.receivePos(pos);
         }
     }
 }

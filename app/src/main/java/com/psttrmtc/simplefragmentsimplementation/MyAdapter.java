@@ -34,7 +34,7 @@ public class MyAdapter extends ArrayAdapter<Student> {
         Student student = studentList.get(position);
 
         imageView.setImageDrawable(context.getResources().getDrawable(student.getImage()));
-        textView.setText(student.getMssv());
+        textView.setText(String.valueOf(student.getMssv()));
         return view;
     }
 }

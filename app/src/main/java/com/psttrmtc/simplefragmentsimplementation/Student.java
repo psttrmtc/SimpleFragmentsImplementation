@@ -2,20 +2,20 @@ package com.psttrmtc.simplefragmentsimplementation;
 
 public class Student {
     int image;
-    String mssv;
+    int mssv;
     String name;
-    String className;
+    int classNumber;
     float GPA;
 
-    public Student(int image, String mssv, String name, String className, float GPA) {
+    public Student(int image, int mssv, String name, int classNumber, float GPA) {
         this.image = image;
         this.mssv = mssv;
         this.name = name;
-        this.className = className;
+        this.classNumber = classNumber;
         this.GPA = GPA;
     }
 
-    public String getMssv() {
+    public int getMssv() {
         return mssv;
     }
 
@@ -23,15 +23,15 @@ public class Student {
         return name;
     }
 
-    public String getClassName() {
-        return className;
+    public int getClassName() {
+        return classNumber;
     }
 
     public float getGPA() {
         return GPA;
     }
 
-    public void setMssv(String mssv) {
+    public void setMssv(int mssv) {
         this.mssv = mssv;
     }
 
@@ -39,8 +39,8 @@ public class Student {
         this.name = name;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClassNumber(int classNumber) {
+        this.classNumber = classNumber;
     }
 
     public void setGPA(float GPA) {

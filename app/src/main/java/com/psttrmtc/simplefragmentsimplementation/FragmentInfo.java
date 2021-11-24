@@ -79,7 +79,7 @@ public class FragmentInfo extends Fragment {
     public void displayInfo(int pos, Student student){
         this.pos = pos;
         this.studentInfo = student;
-        mssv.setText(student.getMssv());
+        mssv.setText(String.valueOf(student.getMssv()));
         name.setText("Họ và tên: " + student.getName());
         className.setText("Lớp: " + student.getClassName());
         GPA.setText("Điểm: " + String.valueOf(student.getGPA()));

@@ -2,17 +2,13 @@ package com.psttrmtc.simplefragmentsimplementation;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,15 +31,15 @@ public class ListFragment extends Fragment {
         studentList = new ArrayList<>();
         listView = (ListView) view.findViewById(R.id.listView);
         textView = (TextView) view.findViewById(R.id.textView);
-        studentList.add(new Student(R.drawable.icon_2,"1612168","Bùi Minh Hải","16",8));
-        studentList.add(new Student(R.drawable.icon_3,"18120441","Nguyễn Minh Lợi","16",8));
-        studentList.add(new Student(R.drawable.icon_1,"1612215","Nguyễn Thanh Hoàng","16",8));
-
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(this.getActivity());
+        studentList = dataBaseHelper.getStudents();
+        studentList.get(0).setImage(R.drawable.icon_1);
+        studentList.get(1).setImage(R.drawable.icon_2);
+        studentList.get(2).setImage(R.drawable.icon_3);
         MyAdapter adapter = new MyAdapter(view.getContext(), R.layout.list_item, studentList);
         sendStudentInfo = studentList.get(pos);
-        textView.setText(sendStudentInfo.getMssv());
+        textView.setText(String.valueOf(sendStudentInfo.getMssv()));
         listView.setAdapter(adapter);
-
         return view;
     }
 
@@ -52,7 +48,7 @@ public class ListFragment extends Fragment {
 //        sendInfo.sentStudent(pos, sendStudentInfo);
         listView.setOnItemClickListener((adapterView, view1, position, l) -> {
             Student student = studentList.get(position);
-            textView.setText(student.getMssv());
+            textView.setText(String.valueOf(student.getMssv()));
             sendInfo.sentStudent(pos, student);
         });
 
@@ -65,7 +61,17 @@ public class ListFragment extends Fragment {
     public void receivePos(int pos){
         sendStudentInfo = studentList.get(pos);
         this.pos = pos;
+        textView.setText(String.valueOf(sendStudentInfo.getMssv()));
         sendInfo.sentStudent(pos, sendStudentInfo);
+        listView.post(new Runnable() {
+            @Override
+            public void run() {
+                listView.requestFocusFromTouch();
+                listView.setSelection(pos);
+
+            }
+        });
+
     }
 
 }
