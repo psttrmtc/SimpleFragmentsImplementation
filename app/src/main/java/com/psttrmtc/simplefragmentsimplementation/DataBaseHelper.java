@@ -33,7 +33,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + MAHS_COLUMN + " INTEGER PRIMARY KEY , "
                 + TENHS_COLUMN + " TEXT, "
                 + MALOP_COLUMN + " INT)";
-//        String createLopTableStatement = "CREATE TABLE IF NOT EXISTS " + LOP_TABLE + " (" + MALOP_COLUMN + " INTEGER PRIMARY KEY , " + TENLOP_COLUMN + " TEXT)";
+        String createLopTableStatement = "CREATE TABLE IF NOT EXISTS " + LOP_TABLE + " (" + MALOP_COLUMN + " INTEGER PRIMARY KEY , " + TENLOP_COLUMN + " TEXT)";
 //        try {
 //            db.execSQL(createHSTableStatement);
 //            db.execSQL(createLopTableStatement);
@@ -42,15 +42,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 //        }
         try {
             db.execSQL(createHSTableStatement);
+            db.execSQL(createLopTableStatement);
 
         } catch (SQLException e) {
             Log.d("SQL exec", e.toString());
         }
-//        addOneClass(16, "K16");
-//        addOneClass(18, "K18");
-        addOneStudent(db, new Student(1,1612168,"Bùi Minh Hải",16, 8));
-        addOneStudent(db, new Student(2,18120441,"Nguyễn Minh Lợi",18, 8));
-        addOneStudent(db, new Student(3,1612215,"Nguyễn Thanh Hoàng",16, 8));
+        addOneClass(db,16, "K16");
+        addOneClass(db, 18, "K18");
+        addOneStudent(db, new Student(R.drawable.icon_1,1612168,"Bùi Minh Hải",16, 8));
+        addOneStudent(db, new Student(R.drawable.icon_2,18120441,"Nguyễn Minh Lợi",18, 8));
+        addOneStudent(db, new Student(R.drawable.icon_3,1612215,"Nguyễn Thanh Hoàng",16, 8));
 
     }
 

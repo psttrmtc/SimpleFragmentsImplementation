@@ -33,8 +33,8 @@ public class ListFragment extends Fragment {
         textView = (TextView) view.findViewById(R.id.textView);
         DataBaseHelper dataBaseHelper = new DataBaseHelper(this.getActivity());
         studentList = dataBaseHelper.getStudents();
-        studentList.get(0).setImage(R.drawable.icon_1);
-        studentList.get(1).setImage(R.drawable.icon_2);
+        studentList.get(0).setImage(R.drawable.icon_2);
+        studentList.get(1).setImage(R.drawable.icon_1);
         studentList.get(2).setImage(R.drawable.icon_3);
         MyAdapter adapter = new MyAdapter(view.getContext(), R.layout.list_item, studentList);
         sendStudentInfo = studentList.get(pos);
